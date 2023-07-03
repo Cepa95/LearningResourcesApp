@@ -1,8 +1,6 @@
 <template>
-  <ul>
    <the-header title="RememberMe"></the-header>
    <stored-resources :resources="storedResources"></stored-resources>
-  </ul>
 </template>
 
 <script>
@@ -39,6 +37,7 @@ export default {
 
 * {
   box-sizing: border-box;
+  background-color: #dde1d5;
 }
 
 html {

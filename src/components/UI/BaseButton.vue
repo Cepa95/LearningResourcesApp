@@ -1,7 +1,8 @@
 <template>
-  <button :type="type" :class="mode"></button>
-  <slot></slot>
-  <!-- <base-button mode="flat"></base-button> -->
+  <button :type="type" :class="mode">
+    <slot></slot>
+    <!-- <base-button mode="flat"></base-button> -->
+  </button>
 </template>
 
 
@@ -10,6 +11,7 @@ export default {
   props: ['type', 'mode'],
 };
 </script>
+
 <style scoped>
 button {
   padding: 0.75rem 1.5rem;
@@ -22,18 +24,19 @@ button {
 
 button:hover,
 button:active {
-  background-color: #270041;
+  background-color: #00b8c0;
   border-color: #270041;
 }
 
 .flat {
   background-color: transparent;
-  color: #3a0061;
+  color: #0074e4;
   border: none;
 }
 
 .flat:hover,
 .flat:active {
-  background-color: #edd2ff;
+  background-color: #a0edf1;
+
 }
 </style>

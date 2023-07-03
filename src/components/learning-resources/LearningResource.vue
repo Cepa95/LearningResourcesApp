@@ -45,11 +45,11 @@ p {
 
 a {
   text-decoration: none;
-  color: #ce5c00;
+  color: #b25203;
 }
 
 a:hover,
 a:active {
-  color: #c89300;
+  color: #533c02;
 }
 </style>
