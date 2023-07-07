@@ -11,9 +11,14 @@
       :mode="addResButtonMode"
       >Add Resources</base-button
     >
+    <base-button
+      @click="setSelectedTab('resource-history')"
+      :mode="addHistoryButtonMode"
+      >History</base-button
+    >
   </base-card>
   <keep-alive>
-  <component :is="selectedTab"></component>
+    <component :is="selectedTab"></component>
   </keep-alive>
 </template>
 
@@ -21,11 +26,13 @@
 <script>
 import StoredResources from './StoredResources.vue';
 import AddResource from './AddResource.vue';
+import ResourceHistory from './ResourceHistory.vue';
 
 export default {
   components: {
     StoredResources,
     AddResource,
+    ResourceHistory,
   },
 
   data() {
@@ -45,6 +52,7 @@ export default {
           link: 'https://google.org',
         },
       ],
+      deletedResources: [],
     };
   },
 
@@ -53,6 +61,7 @@ export default {
       resources: this.storedResources,
       addResource: this.addResource,
       deleteResource: this.removeResource,
+      deletedResources: this.deletedResources,
     };
   },
 
@@ -62,6 +71,9 @@ export default {
     },
     addResButtonMode() {
       return this.selectedTab === 'add-resource' ? null : 'flat';
+    },
+    addHistoryButtonMode() {
+      return this.selectedTab === 'resource-history' ? null : 'flat';
     },
   },
 
@@ -79,9 +91,12 @@ export default {
       this.storedResources.unshift(newResource);
       this.selectedTab = 'stored-resources';
     },
-    removeResource(resId){
-      const resIndex = this.storedResources.findIndex(res => res.id == resId);
-      this.storedResources.splice(resIndex, 1)
+    removeResource(resId) {
+      const resIndex = this.storedResources.findIndex(
+        (res) => res.id === resId
+      );
+      const deletedResource = this.storedResources.splice(resIndex, 1)[0];
+      this.deletedResources.unshift(deletedResource);
     },
   },
 };
