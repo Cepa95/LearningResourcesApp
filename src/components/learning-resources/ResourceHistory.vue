@@ -2,11 +2,13 @@
   <div>
     <ul>
       <li v-for="res in deletedResources" :key="res.id">
-        <h3>{{ res.title }}</h3>
-        <p>{{ res.description }}</p>
-        <nav>
-          <a :href="res.link">View Resource</a>
-        </nav>
+        <base-card>
+          <h3>{{ res.title }}</h3>
+          <p>{{ res.description }}</p>
+          <nav>
+            <a :href="res.link">View Resource</a>
+          </nav>
+        </base-card>
       </li>
     </ul>
     <div class="button-container">
@@ -42,20 +44,27 @@ button:active {
   border-color: #270041;
 }
 
-.flat {
-  background-color: transparent;
-  color: #0074e4;
-  border: none;
-}
-
-.flat:hover,
-.flat:active {
-  background-color: #a0edf1;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  max-width: 40rem;
+}
+
+a {
+  text-decoration: none;
+  color: #b25203;
+}
+
+a:hover,
+a:active {
+  color: #533c02;
 }
 </style>
